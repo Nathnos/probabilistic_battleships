@@ -2,7 +2,7 @@
 Main function
 """
 
-from game import generate_grid, show
+from game.board_setup import generate_grid, show
 
 
 def main():

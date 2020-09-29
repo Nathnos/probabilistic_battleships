@@ -4,7 +4,7 @@ Main game functions
 
 import numpy as np
 
-from game_tools import (
+from game.game_tools import (
     get_direction,
     get_boat_size,
     get_random_direction,

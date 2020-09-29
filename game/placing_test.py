@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from game import place, eq
+from game.board_setup import place, eq
 
 
 class PlacingTest(unittest.TestCase):
