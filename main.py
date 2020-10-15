@@ -52,7 +52,10 @@ def show_grids_needed_for_2(number_of_tries):
     boat_list = [1, 2]
     for i in range(number_of_tries):
         grids_sum += nb_random_grid(generate_random_grid(boat_list), boat_list)
-    print("Average number of random grids needed to get a grid with 3 ships : ", grids_sum / number_of_tries)
+    print(
+        "Average number of random grids needed to get a grid with 3 ships : ",
+        grids_sum / number_of_tries,
+    )
 
 
 if __name__ == "__main__":

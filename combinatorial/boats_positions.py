@@ -9,6 +9,11 @@ import gc
 
 
 def number_of_positions(boat_list):
+    """
+    We consider that placing boat 1 then boat 2 is not the same as placing boat 2 then boat 1, even thought it may
+    result in the same board state. Otherwise, force brute is impossible, as it demands to keep in memory all grids
+    already created, or to ignore some cases. This increases a lot the number of possible states.
+    """
     positions = 0
     for boat in boat_list:
         remaining_boat_list = boat_list.copy()
@@ -17,13 +22,6 @@ def number_of_positions(boat_list):
             get_empty_grid(), boat, remaining_boat_list
         )
     return positions
-
-
-"""
-We consider that placing boat 1 then boat 2 is not the same as placing boat 2 then boat 1, even thought it may 
-result in the same board state.
-Otherwise, force brute is impossible, as it demands to keep in memory all grids already created.
-"""
 
 
 def rec_number_of_positions(grid, boat, remaining_boat_list):
