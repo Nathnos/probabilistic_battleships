@@ -9,26 +9,31 @@ from combinatorial.single_boat_positions import number_of_positions
 import combinatorial.boats_positions
 from combinatorial.estimate_probabilities import nb_random_grid
 from game.Battle import Battle
+import matplotlib.pyplot as plt
 
 
 def main():
     show_positions()
     show_positions_2_boats()
     show_grids_needed_for_2(5)
-    play_game(100)
+    play_game(500)
 
 
 def play_game(nb_of_games):
     battle = Battle("random", "random")
     total_moves = 0
+    x = list()
     for _ in range(nb_of_games):
         _, moves = battle.launch_game()
         total_moves += moves
+        x.append(moves)
     print(
         "Random strat : average of {} moves (from both players).".format(
             int(total_moves / nb_of_games)
         )
     )
+    plt.hist(x)
+    plt.show()
 
 
 def show_random_grid():
