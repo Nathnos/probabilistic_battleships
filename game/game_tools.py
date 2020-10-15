@@ -42,5 +42,9 @@ def get_random_direction():
     return random.choice(["horizontal", "vertical"])
 
 
+def get_random_player():
+    return random.choice([1, 2])
+
+
 def get_random_position():
     return random.randint(0, 9), random.randint(0, 9)

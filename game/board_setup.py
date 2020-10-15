@@ -9,6 +9,7 @@ from game.game_tools import (
     get_boat_size,
     get_random_direction,
     get_random_position,
+    get_random_player,
 )
 
 
@@ -30,25 +31,29 @@ def can_place(grid, boat, position, direction):
     return True
 
 
-def place(grid, boat, position, direction):
-    if can_place(grid, boat, position, direction):
-        x_dir, y_dir = get_direction(direction)
-        boat_size = get_boat_size(boat)
-        x, y = position
-        for i in range(boat_size):
-            grid[y + i * y_dir, x + i * x_dir] = boat
-        return True
-    else:  # Can't place
+def place(grid, boat, position, direction, player):
+    if not can_place(grid, boat, position, direction):
         return False
+    x_dir, y_dir = get_direction(direction)
+    boat_size = get_boat_size(boat)
+    x, y = position
+    for i in range(boat_size):
+        grid[y + i * y_dir, x + i * x_dir] = player
+    return True
 
 
-def generate_random_grid():
-    return generate_random_grid(range(1, 6))  # For every boat
-
-def generate_random_grid(boat_list):
-    grid = np.zeros((10, 10), dtype=np.uint8)
+def generate_random_grid(boat_list=range(1, 6), player=1):
+    grid = get_empty_grid()
     for boat in boat_list:
-        random_placement(grid, boat)
+        random_placement(grid, boat, player)
+    return grid
+
+
+def generate_random_grid_2_players(boat_list=range(1, 6)):
+    grid = get_empty_grid()
+    for boat in boat_list:
+        random_placement(grid, boat, 1)
+        random_placement(grid, boat, 2)
     return grid
 
 
@@ -56,12 +61,12 @@ def get_empty_grid():
     return np.zeros((10, 10), dtype=np.uint8)
 
 
-def random_placement(grid, boat):
+def random_placement(grid, boat, player):
     placed = False
     while not placed:
         direction = get_random_direction()
         position = get_random_position()
-        placed = place(grid, boat, position, direction)
+        placed = place(grid, boat, position, direction, player)
 
 
 def show(grid):
