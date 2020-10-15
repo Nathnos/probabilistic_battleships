@@ -1,7 +1,5 @@
 import unittest
 
-import numpy as np
-
 from game.board_setup import place, eq, get_empty_grid
 
 
