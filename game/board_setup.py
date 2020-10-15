@@ -9,7 +9,6 @@ from game.game_tools import (
     get_boat_size,
     get_random_direction,
     get_random_position,
-    get_random_player,
 )
 
 
@@ -31,29 +30,21 @@ def can_place(grid, boat, position, direction):
     return True
 
 
-def place(grid, boat, position, direction, player):
+def place(grid, boat, position, direction):
     if not can_place(grid, boat, position, direction):
         return False
     x_dir, y_dir = get_direction(direction)
     boat_size = get_boat_size(boat)
     x, y = position
     for i in range(boat_size):
-        grid[y + i * y_dir, x + i * x_dir] = player
+        grid[y + i * y_dir, x + i * x_dir] = boat
     return True
 
 
-def generate_random_grid(boat_list=range(1, 6), player=1):
+def generate_random_grid(boat_list=range(1, 6)):
     grid = get_empty_grid()
     for boat in boat_list:
-        random_placement(grid, boat, player)
-    return grid
-
-
-def generate_random_grid_2_players(boat_list=range(1, 6)):
-    grid = get_empty_grid()
-    for boat in boat_list:
-        random_placement(grid, boat, 1)
-        random_placement(grid, boat, 2)
+        random_placement(grid, boat)
     return grid
 
 
@@ -61,12 +52,12 @@ def get_empty_grid():
     return np.zeros((10, 10), dtype=np.uint8)
 
 
-def random_placement(grid, boat, player):
+def random_placement(grid, boat):
     placed = False
     while not placed:
         direction = get_random_direction()
         position = get_random_position()
-        placed = place(grid, boat, position, direction, player)
+        placed = place(grid, boat, position, direction)
 
 
 def show(grid):

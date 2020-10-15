@@ -16,7 +16,7 @@ def main():
     show_positions()
     show_positions_2_boats()
     show_grids_needed_for_2(5)
-    play_game(500)
+    play_game(2000)
 
 
 def play_game(nb_of_games):

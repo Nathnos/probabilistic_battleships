@@ -32,7 +32,7 @@ def rec_number_of_positions(grid, boat, remaining_boat_list):
         for j in range(10):
             if can_place(grid, boat, (i, j), "horizontal"):
                 new_grid = grid.copy()
-                place(new_grid, boat, (i, j), "horizontal", 1)
+                place(new_grid, boat, (i, j), "horizontal")
                 for remaining_boat in remaining_boat_list:
                     new_remaining_boat_list = remaining_boat_list.copy()
                     new_remaining_boat_list.remove(remaining_boat)
@@ -42,7 +42,7 @@ def rec_number_of_positions(grid, boat, remaining_boat_list):
                     gc.collect()
             if can_place(grid, boat, (i, j), "vertical"):
                 new_grid = grid.copy()
-                place(new_grid, boat, (i, j), "vertical", 1)
+                place(new_grid, boat, (i, j), "vertical")
                 for remaining_boat in remaining_boat_list:
                     new_remaining_boat_list = remaining_boat_list.copy()
                     new_remaining_boat_list.remove(remaining_boat)
