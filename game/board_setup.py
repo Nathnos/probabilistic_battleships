@@ -42,9 +42,12 @@ def place(grid, boat, position, direction):
         return False
 
 
-def generate_grid():
+def generate_random_grid():
+    return generate_random_grid(range(1, 6))  # For every boat
+
+def generate_random_grid(boat_list):
     grid = np.zeros((10, 10), dtype=np.uint8)
-    for boat in range(1, 6):  # For each boat
+    for boat in boat_list:
         random_placement(grid, boat)
     return grid
 
