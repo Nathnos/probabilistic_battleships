@@ -15,6 +15,10 @@ def get_direction(direction):
         return 0, -1
     elif direction == "bottom":
         return 0, 1
+    elif direction == "horizontal":
+        return get_direction("right")
+    elif direction == "vertical":
+        return get_direction("bottom")
     else:
         print("Error : Can't resolve direction :", direction, file=sys.stderr)
 
@@ -35,7 +39,7 @@ def get_boat_size(boat):
 
 
 def get_random_direction():
-    return random.choice(["left", "right", "top", "bottom"])
+    return random.choice(["horizontal", "vertical"])
 
 
 def get_random_position():
