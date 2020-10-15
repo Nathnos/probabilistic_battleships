@@ -49,6 +49,10 @@ def generate_grid():
     return grid
 
 
+def get_empty_grid():
+    return np.zeros((10, 10), dtype=np.uint8)
+
+
 def random_placement(grid, boat):
     placed = False
     while not placed:
