@@ -25,7 +25,11 @@ class Battle:
             number_of_moves += 1
             victory = self.victory()
         if verbose:
-            print("Player {} wins ! {} total moves played".format(victory, number_of_moves))
+            print(
+                "Player {} wins ! {} total moves played".format(
+                    victory, number_of_moves
+                )
+            )
         self.reset()
         return self.victory(), number_of_moves
 

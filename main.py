@@ -24,7 +24,11 @@ def play_game(nb_of_games):
     for _ in range(nb_of_games):
         _, moves = battle.launch_game()
         total_moves += moves
-    print("Random strat : average of {} moves (from both players).".format(int(total_moves/nb_of_games)))
+    print(
+        "Random strat : average of {} moves (from both players).".format(
+            int(total_moves / nb_of_games)
+        )
+    )
 
 
 def show_random_grid():
@@ -66,7 +70,7 @@ def show_grids_needed_for_2(number_of_tries):
     print(
         "Average number of random grids needed to get a grid with 2 ships : ",
         grids_sum / number_of_tries,
-        "\n"
+        "\n",
     )
 
 
