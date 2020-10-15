@@ -13,23 +13,28 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    show_positions()
-    show_positions_2_boats()
-    show_grids_needed_for_2(5)
-    play_game(2000)
+    play_games(2000, "random")
+    play_games(1000, "heuristic")
 
 
-def play_game(nb_of_games):
-    battle = Battle("random", "random")
+def play_games(nb_of_games, strat_name):
+    battle = Battle("random", strat_name)
     total_moves = 0
     x = list()
+    winners = list()
     for _ in range(nb_of_games):
-        _, moves = battle.launch_game()
+        winner, moves = battle.launch_game()
         total_moves += moves
         x.append(moves)
+        winners.append(winner)
     print(
-        "Random strat : average of {} moves (from both players).".format(
-            int(total_moves / nb_of_games)
+        "{} strat : average of {} moves (per player).".format(
+            strat_name, int(total_moves / nb_of_games)
+        )
+    )
+    print(
+        "win rate against random : {} %\n".format(
+            winners.count(2) / len(winners) * 100
         )
     )
     plt.hist(x)
