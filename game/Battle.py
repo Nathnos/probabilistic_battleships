@@ -55,9 +55,9 @@ class Battle:
             boat = grid[position]
             grid[position] = 0
             if not np.isin(grid, boat).any():
-                return 2  # Drowned
-            return 1  # Only hit
-        return 2  # Missed !
+                return 2, boat  # Drowned
+            return 1, boat  # Only hit
+        return 0, 0  # Missed !
 
     def victory(self):
         if not self.current_player.grid.any():
@@ -67,8 +67,8 @@ class Battle:
 
     def play_turn(self):
         move = self.current_player.strat()
-        hit = self.play(move)
-        self.current_player.feedback(move, hit)
+        hit, boat = self.play(move)
+        self.current_player.feedback(move, hit, boat)
 
     def reset(self):
         grid1 = generate_random_grid()

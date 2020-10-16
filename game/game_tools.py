@@ -38,8 +38,11 @@ def get_boat_size(boat):
         print("Error : Can't resolve boat :", boat, file=sys.stderr)
 
 
-def get_random_direction(to_int=False):
-    direction = random.choice(["horizontal", "vertical"])
+def get_random_direction(to_int=False, positive_only=True):
+    if positive_only:
+        direction = random.choice(["horizontal", "vertical"])
+    else:
+        direction = random.choice(["left", "right", "top", "bottom"])
     if to_int:
         return get_direction(direction)
     return direction

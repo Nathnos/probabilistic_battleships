@@ -30,14 +30,18 @@ def can_place(grid, boat, position, direction):
     return True
 
 
-def place(grid, boat, position, direction):
-    if not can_place(grid, boat, position, direction):
+def place(grid, boat, position, direction, append=False):
+    if not can_place(grid, boat, position, direction) and not append:
         return False
     x_dir, y_dir = get_direction(direction)
     boat_size = get_boat_size(boat)
     x, y = position
-    for i in range(boat_size):
-        grid[y + i * y_dir, x + i * x_dir] = boat
+    if append:
+        for i in range(boat_size):
+            grid[y + i * y_dir, x + i * x_dir] += 1
+    else:
+        for i in range(boat_size):
+            grid[y + i * y_dir, x + i * x_dir] = boat
     return True
 
 

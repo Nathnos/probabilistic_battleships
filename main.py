@@ -15,10 +15,12 @@ import matplotlib.pyplot as plt
 def main():
     play_games(2000, "random")
     play_games(1000, "heuristic")
+    play_games(100, "simple_probabilistic")
+    play_games(100, "simple_probabilistic", "heuristic")
 
 
-def play_games(nb_of_games, strat_name):
-    battle = Battle("random", strat_name)
+def play_games(nb_of_games, strat_name, opponent_strat="random"):
+    battle = Battle(opponent_strat, strat_name)
     total_moves = 0
     x = list()
     winners = list()
@@ -33,8 +35,8 @@ def play_games(nb_of_games, strat_name):
         )
     )
     print(
-        "win rate against random : {} %\n".format(
-            winners.count(2) / len(winners) * 100
+        "win rate against {} : {} %\n".format(
+            opponent_strat, winners.count(2) / len(winners) * 100
         )
     )
     plt.hist(x)
