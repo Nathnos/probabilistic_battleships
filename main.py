@@ -13,19 +13,16 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    play_games(2000, "random")
-    play_games(1000, "heuristic")
-    play_games(100, "simple_probabilistic")
-    play_games(100, "simple_probabilistic", "heuristic")
+    play_games(100, "Monte Carlo", "simple_probabilistic", verbose=0)
 
 
-def play_games(nb_of_games, strat_name, opponent_strat="random"):
+def play_games(nb_of_games, strat_name, opponent_strat="random", verbose=1):
     battle = Battle(opponent_strat, strat_name)
     total_moves = 0
     x = list()
     winners = list()
     for _ in range(nb_of_games):
-        winner, moves = battle.launch_game()
+        winner, moves = battle.launch_game(verbose)
         total_moves += moves
         x.append(moves)
         winners.append(winner)
@@ -77,7 +74,7 @@ def show_positions_3_boats():
 def show_grids_needed_for_2(number_of_tries):
     grids_sum = 0
     boat_list = [1, 2]
-    for i in range(number_of_tries):
+    for _ in range(number_of_tries):
         grids_sum += nb_random_grid(generate_random_grid(boat_list), boat_list)
     print(
         "Average number of random grids needed to get a grid with 2 ships : ",

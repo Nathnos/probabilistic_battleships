@@ -1,5 +1,5 @@
 """
-Gives the number of positions of a list of ships.
+Gives the number of positions of a list of ships. 2.3
 Done recursively.
 """
 

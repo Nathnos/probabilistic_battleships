@@ -1,5 +1,5 @@
 """
-Gives the number of positions of a given ship
+Gives the number of positions of a given ship 2.2
 """
 
 from game.board_setup import can_place, get_empty_grid
