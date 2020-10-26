@@ -1,5 +1,7 @@
 """
 Represent a battleship player, using a specific strategy.
+A player has access to its own grid (where its boats are),
+but never to the opponent's grid.
 """
 import random
 from game.game_tools import get_random_position, get_random_direction
@@ -50,8 +52,9 @@ class FrequencyGrid:
 class Player:
     def __init__(self, strat, number, grid):
         """
-        @own_grid Tells the player where its boats are.
-        Kinda useful.
+        @strat : How the player will chose where to shoot.
+        @grid : The player's grid, tells the player where its boats are. Kinda useful.
+        @number : Player 1 or 2.
         """
         self.strat_name = strat
         self.number = number
@@ -79,6 +82,10 @@ class Player:
             self.strat_feedback = self.monte_carlo_feedback
 
     def check_move(self, position):
+        """
+        Check if selected move has not been already played,
+        or if the player it shooting its own boat…
+        """
         i, j = position
         if i >= 10 or i < 0 or j >= 10 or j < 0:
             return False

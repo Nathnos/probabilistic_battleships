@@ -1,5 +1,5 @@
 """
-Class to play a game
+Class to play a game.
 """
 
 import random
@@ -19,6 +19,10 @@ class Battle:
         self.current_player = random.choice([self.player1, self.player2])
 
     def launch_game(self, verbose=0):
+        """
+        Starts the game between two players, with defined strategies.
+        Returns the number of turns of the game.
+        """
         victory = 0
         number_of_moves = 0
         while not victory:

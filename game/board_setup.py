@@ -31,6 +31,9 @@ def can_place(grid, boat, position, direction):
 
 
 def place(grid, boat, position, direction, append=False):
+    """
+    Returns where or not the boat has been placed.
+    """
     if not can_place(grid, boat, position, direction) and not append:
         return False
     x_dir, y_dir = get_direction(direction)
@@ -46,6 +49,9 @@ def place(grid, boat, position, direction, append=False):
 
 
 def generate_random_grid(boat_list=range(1, 6), compatible=None):
+    """
+    Generate a random grid,
+    """
     grid = get_empty_grid()
     if compatible is None:
         for boat in boat_list:
