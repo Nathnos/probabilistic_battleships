@@ -50,7 +50,7 @@ def place(grid, boat, position, direction, append=False):
 
 def generate_random_grid(boat_list=range(1, 6)):
     """
-    Generate a random grid,
+    Generate a random grid, making sure boats don't share same position.
     """
     grid = get_empty_grid()
     for boat in boat_list:
@@ -63,6 +63,9 @@ def get_empty_grid():
 
 
 def random_placement(grid, boat):
+    """
+    Try a random location, until it's possible (no other boats there).
+    """
     placed = False
     while not placed:
         direction = get_random_direction()

@@ -1,6 +1,8 @@
-from math import sqrt
 import random
-import numpy as np, numpy.random
+from math import sqrt
+
+import numpy as np
+import numpy.random
 
 
 class ProbabilityGrid:
