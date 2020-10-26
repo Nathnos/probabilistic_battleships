@@ -48,17 +48,13 @@ def place(grid, boat, position, direction, append=False):
     return True
 
 
-def generate_random_grid(boat_list=range(1, 6), compatible=None):
+def generate_random_grid(boat_list=range(1, 6)):
     """
     Generate a random grid,
     """
     grid = get_empty_grid()
-    if compatible is None:
-        for boat in boat_list:
-            random_placement(grid, boat)
-    else:
-        for boat in boat_list:
-            random_placement_compatible(grid, compatible, boat)
+    for boat in boat_list:
+        random_placement(grid, boat)
     return grid
 
 
@@ -72,19 +68,6 @@ def random_placement(grid, boat):
         direction = get_random_direction()
         position = get_random_position()
         placed = place(grid, boat, position, direction)
-
-
-def random_placement_compatible(grid, compatible_grid, boat):
-    placed = False
-    direction = (0, 0)
-    position = (-1, -1)
-    while not placed:
-        direction = get_random_direction()
-        position = get_random_position()
-        placed = can_place(grid, boat, position, direction) and can_place(
-            compatible_grid, boat, position, direction
-        )
-    place(grid, boat, position, direction)
 
 
 def show(grid):

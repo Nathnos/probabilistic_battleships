@@ -53,7 +53,7 @@ class Player:
     def __init__(self, strat, number, grid):
         """
         @strat : How the player will chose where to shoot.
-        @grid : The player's grid, tells the player where its boats are. Kinda useful.
+        @grid : The player's grid. Not very useful for itself, but needed to check defeat.
         @number : Player 1 or 2.
         """
         self.strat_name = strat
@@ -83,17 +83,16 @@ class Player:
 
     def check_move(self, position):
         """
-        Check if selected move has not been already played,
-        or if the player it shooting its own boat…
+        Check if selected move has not been already played
         """
         i, j = position
         if i >= 10 or i < 0 or j >= 10 or j < 0:
             return False
-        return position not in self.played and not self.initial_grid[position]
+        return position not in self.played
 
     def random_strat(self):
         """
-        Random move but avoids hitting its own boat and playing two times the same move.
+        Random move but avoids playing two times the same move.
         """
         position = get_random_position()
         while not self.check_move(position):

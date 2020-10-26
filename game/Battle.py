@@ -12,10 +12,8 @@ from game.board_setup import generate_random_grid
 
 class Battle:
     def __init__(self, strat_player_1, strat_player_2):
-        grid1 = generate_random_grid()
-        grid2 = generate_random_grid(compatible=grid1)
-        self.player1 = Player(strat_player_1, 1, grid1)
-        self.player2 = Player(strat_player_2, 2, grid2)
+        self.player1 = Player(strat_player_1, 1, generate_random_grid())
+        self.player2 = Player(strat_player_2, 2, generate_random_grid())
         self.current_player = random.choice([self.player1, self.player2])
 
     def launch_game(self, verbose=0):
@@ -75,10 +73,8 @@ class Battle:
         self.current_player.feedback(move, hit, boat)
 
     def reset(self):
-        grid1 = generate_random_grid()
-        grid2 = generate_random_grid(compatible=grid1)
-        self.player1.grid = grid1
-        self.player2.grid = grid2
+        self.player1.grid = generate_random_grid()
+        self.player2.grid = generate_random_grid()
         self.player1.reset()
         self.player2.reset()
         self.current_player = random.choice([self.player1, self.player2])

@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    play_games(10, "Monte Carlo", "heuristic", verbose=0)
+    play_games(10, "Monte Carlo")
 
 
 def play_games(nb_of_games, strat_name, opponent_strat="random", verbose=1):
